@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"io"
-	"io/ioutil"
 	"log"
 	"mime/multipart"
 	"net/http"
@@ -104,7 +103,7 @@ func HttpPostJson(addHeaders map[string]string, data interface{}, urlPath string
 			resp.Body.Close()
 		}
 	}()
-	body, err = ioutil.ReadAll(resp.Body)
+	body, err = io.ReadAll(resp.Body)
 	return
 }
 func HttpPostJsoDownload(addHeaders map[string]string, data interface{}, urlPath string, filePathName string) error {
